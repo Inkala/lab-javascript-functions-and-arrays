@@ -1,5 +1,13 @@
 // Find the maximum
 
+function maxOfTwoNumbers(a, b) {
+  if (a > b) {
+    return a;
+  } else {
+    return b;
+  }
+}
+
 // Finding Longest Word
 var words = [
   'mystery',
@@ -11,13 +19,37 @@ var words = [
   'crackpot'
 ];
 
+function findLongestWord (array) {
+  var longest = array[0];
+  for (var i = 1; i < array.length; i++) {
+    if (array[i].length > longest.length) {
+      longest = array[i];
+    }
+  }
+  return longest;
+}
+
 // Calculating a Sum
 
 var numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
+function sumArray (array) {
+  var sum = 0;
+  for (var i = 0; i < array.length; i++) {
+    sum += array[i];
+  }
+  return sum;
+}
+
 // Calculate the Average
 
 var numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
+
+function averageNumbers(array) {
+  if (array.length == 0) {return};
+  var sum = sumArray(array);
+  return (sum / array.length);
+}
 
 // Array of Strings
 var wordsArr = [
@@ -32,6 +64,15 @@ var wordsArr = [
   'fuel',
   'palace'
 ];
+
+function averageWordLength(array){
+  if (array.length == 0) {return};
+  var average = 0;
+  for (var i = 0; i < array.length; i++) {
+    average += array[i].length;
+  }
+  return (average / array.length);
+}
 
 // Unique Arrays
 var wordsUnique = [
@@ -48,6 +89,17 @@ var wordsUnique = [
   'bring'
 ];
 
+function uniquifyArray(array) {
+  if (array.length == 0) {return};
+  var newArray = [];
+  for (var i = 0; i < array.length; i++) {
+    if (newArray.indexOf(array[i]) === -1) {
+      newArray.push(array[i]);
+    }
+  }
+  return newArray;
+}
+
 // Finding Elements
 var wordsFind = [
   'machine',
@@ -59,6 +111,15 @@ var wordsFind = [
   'truth',
   'disobedience'
 ];
+
+function doesWordExist(array, word) {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === word) {
+      return true;
+    }
+  }
+  return false
+}
 
 // Counting Repetion
 var wordsCount = [
@@ -74,6 +135,19 @@ var wordsCount = [
   'disobedience',
   'matter'
 ];
+
+function howManyTimes(array, word) {
+  if (array.length === 0) {return false};
+  var times = 0;
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === word) {
+      times++;
+    }
+  }
+  return times;
+}
+
+
 // Bonus Quest
 
 var matrix = [
@@ -98,3 +172,18 @@ var matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+
+function greatestProduct (array) {
+  var maximum = 0;
+  for(var i = 0; i < array[0].length-3; i++) {
+    for(var j = 0; j < array.length-3; j++) {
+      if (maximum < array[i][j]*array[i][j+1]*array[i][j+2]*array[i][j+3]) {
+        maximum = array[i][j]*array[i][j+1]*array[i][j+2]*array[i][j+3];
+      }
+      if (i < array[i][j]*array[i+1][j]*array[i+2][j]*array[i+3][j]) {
+        maximum = array[i][j]*array[i+1][j]*array[i+2][j]*array[i+3][j];
+      }
+    }
+  }
+  return maximum;
+}
